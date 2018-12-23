@@ -1,11 +1,4 @@
 <!DOCTYPE html>
-<?php
-session_start();
-$session_value = (isset($_SESSION['nickname'])) ? $_SESSION['nickname'] : '';
-spl_autoload_register(function ($class_name) {
-    include "../models/".$class_name . '.php';
-});
-?>
 <html>
 
 <head>
@@ -15,15 +8,15 @@ spl_autoload_register(function ($class_name) {
 </head>
 <link rel="stylesheet" type="text/css" href="../styles/homeStyle.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   <script type="text/javascript">
-    var myvar='<?php
-echo $session_value;
-?>';
-    </script>
+
 <body>
     <h1>Music Library </h1>
     <aside class="parent">
-                <?php
+<?php
+session_start();
+spl_autoload_register(function ($class_name) {
+    include "../models/".$class_name . '.php';
+});
 
 if (array_key_exists('nickname', $_SESSION)) {
     echo '
@@ -56,14 +49,14 @@ if (array_key_exists('nickname', $_SESSION)) {
 }
 
 ?>
-          <?php
+           <?php
 if (!array_key_exists('nickname', $_SESSION)) {
     echo '<form action="../views/login.php" method="GET"> 
         <button class="button " type="submit"><i class="fa fa-sign-in"></i></button>
    </form>
         <span class="clear"></span>';
 ?>
-      </div>
+       </div>
         <span class="clear"></span>
     </aside>
 
@@ -75,51 +68,31 @@ if (!array_key_exists('nickname', $_SESSION)) {
    </form>
         <span class="clear"></span>
    ';
+}
+
 ?>
-      </div>
+       </div>
         <span class="clear"></span>
         </aside>
 
         <div id="content">
-            <?php
-    $conn = new PDO('mysql:host=localhost;dbname=project', 'root', '');
+
+ <?php
+if (array_key_exists('nickname', $_SESSION)) {
+$conn = new PDO('mysql:host=localhost;dbname=project', 'root', '');
     // Song::loadAllSongsInDB();
-    $result = Song::getAllSongs($conn);
-    $arrayIds = User::getAllFavouriteSongs($conn,$_SESSION["nickname"]);
+    $result = User::getAllUsers($conn);
         while ($row = $result->fetch()) {
-            echo '
-       <div class="song ' . $row["id"] . '">
- 
-       <div class = "songName">
-             <div class="heart">';
+                echo "Потребителско име: " . $row["nickname"] . 
+                "<br>";
+                 echo " Регистриран на: " . $row["created_at"] . 
+                "<hr><br>";
+        }
 
-      if(in_array( $row["id"], $arrayIds)){
-       echo '<i onclick="like(' . $row["id"] . ')"  class="fa fa-heart"></i>';
-      }
-      else{
-       echo ' <i onclick="like(' . $row["id"] . ')"  class="fa fa-heart-o"></i>';
-      }
-      echo 
-'</div>
-       <p class=' . $row["id"] . '>Name: ' .  $row["title"] . '</p>
-        </div>
-       <button class="button audioBtn ' . $row["id"] . '" type="submit" onclick="play(' . $row["id"] . ')"><i class="fa fa-play"></i></button>
-       </div>';
-    }
-    
-    echo '
-    <audio controls id="audio" src=""> 
-    </audio>
-
-  ';
-    
 }
 ?>
-      </div>
-</body>
-<script type="text/javascript" src="../js/ajax.js">
-</script>
-<script type="text/javascript" src="../js/home.js">
-</script>
+       </div>
 
+
+</body>
 </html>

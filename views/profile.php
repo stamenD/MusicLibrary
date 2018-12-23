@@ -33,7 +33,7 @@ if (array_key_exists('nickname', $_SESSION)) {
             </a>
         </div>
         <div>
-            <a href="">
+            <a href="./allUsers.php">
                 <p>Потребители</p>
             </a>
         </div>
@@ -60,7 +60,7 @@ if (!array_key_exists('nickname', $_SESSION)) {
     <?php
 } else {
     echo '
-    <form action="../server/logout.php" method="POST"> 
+    <form action="../controllers/logout.php" method="POST"> 
         <button class="button " type="submit"><i class="fa fa-sign-out"></i></button>
    </form>
         <span class="clear"></span>
@@ -76,10 +76,10 @@ if (!array_key_exists('nickname', $_SESSION)) {
 
  <?php
 if (array_key_exists('nickname', $_SESSION)) {
-    echo '<p>Потребтелско име: '. $_SESSION["nickname"]. '</p>';
-    echo '<p>Любими песни: </p>';
-    echo '<p>Най-слушана песен: </p>';
-    echo '<p>Общо слушано време: </p>';
+    echo '<p>Потребтелско име: '. $_SESSION["nickname"]. '</p><hr>';
+    echo '<p>Любими песни: </p><hr>';
+    echo '<p>Най-слушана песен: </p><hr>';
+    echo '<p>Общо слушано време: </p><hr>';
 
 }
 ?>
@@ -87,7 +87,5 @@ if (array_key_exists('nickname', $_SESSION)) {
 
 
 </body>
-<script type="text/javascript" src="../js/home.js">
-</script>
 
 </html>

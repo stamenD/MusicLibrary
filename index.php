@@ -11,7 +11,7 @@
 <body>
     <div class="ver">
     <div class="container">
-        <form action="server/register.php" onsubmit="return validate()" method="POST">
+        <form action="controllers/register.php" onsubmit="return validate()" method="POST">
             <p><strong>РЕГИСТРАЦИЯ</strong></p>
             <div><input maxlength="20" placeholder="  Потребителско име" type="text" name="nickname"></div>
             <div><input maxlength="20" placeholder="  Парола" type="text" name="passwordFirst"></div>

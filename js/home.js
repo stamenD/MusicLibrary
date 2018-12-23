@@ -1,23 +1,22 @@
 let playme = document.getElementById("audio");
 playme.className = "hidden"
 
-function like(path) {
+function like(path, nickname) {
+        let info = {"nickname": myvar, "song": parseInt(path)}
+        console.log(info)
     let firstHeart = document.querySelectorAll(".song")[0];
     let firstNumber = firstHeart.className.split(" ")[1];
-    let heart = document.querySelectorAll(".song")[path - parseInt(firstNumber)]
-        .childNodes[1]
-        .childNodes[1]
-        .childNodes[1]
+    let heart = document.querySelectorAll(".song")[path - parseInt(firstNumber)].querySelector(".songName .heart i")
     // heart.classList.remove("fa");
-    console.log("..." + heart.className)
+    console.log(heart)
     if (heart.className == "fa fa-heart") {
         heart.className = "fa fa-heart-o";
+        send(info, "POST", "../controllers/dislikeSong.php")
     } else {
         heart.className = "fa fa-heart";
-
+        send(info, "POST", "../controllers/likeSong.php")
     }
 
-    console.log(heart)
 
 }
 

@@ -66,7 +66,7 @@ function loadDoc() {
         }
     };
 
-    xhttp.open("POST", "server/register.php", true);
+    xhttp.open("POST", "controllers/register.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send(JSON.stringify(info));
 }

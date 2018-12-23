@@ -13,7 +13,7 @@
 <body>
     <div class="ver">
     <div class="container">
-        <form action="../server/login.php" onsubmit="return validate()" method="POST">
+        <form action="../controllers/login.php" onsubmit="return validate()" method="POST">
             <p><strong>ВХОД</strong></p>
             <div><input maxlength="20" placeholder="  Потребителско име" type="text" name="nickname"></div>
             <div><input maxlength="20" placeholder="  Парола" type="text" name="password"></div>
