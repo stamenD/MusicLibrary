@@ -1,0 +1,52 @@
+p {
+    background-color: grey;
+    color: white;
+    margin: 0;
+    padding: 1.2em;
+    padding: 10px;
+    box-shadow: -1px 0px grey, 0px -1px grey, 1px 0px grey, -1px -1px grey, 1px -1px grey;
+}
+
+form div {
+    margin: 1.1em;
+}
+
+input {
+    width: 100%;
+    height: 2.2em;
+}
+
+.ver {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.container {
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid #7E7D7E;
+    width: 29.5%;
+    background-color: #F5F5F0;
+}
+
+.button {
+    cursor: pointer;
+    width: 100%;
+    background-color: grey;
+    color: white;
+    padding: 0.6em 1.2em;
+    border-color: grey;
+    border-style: solid;
+}
+
+#errors {
+    width: 50%;
+    margin: 50px auto;
+}
+
+#errors p {
+    background-color: grey;
+}

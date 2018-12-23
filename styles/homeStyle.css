@@ -1,0 +1,110 @@
+body {
+    background: url("../static/imgs/background.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    /*overflow: hidden;*/
+}
+
+h1 {
+    text-align: center;
+}
+a{
+  text-decoration:none;
+}
+
+form div {
+    text-align: center;
+}
+
+aside {
+    border: 2px solid grey;
+}
+
+aside div {
+    float: left;
+    margin-left: 2em;
+    font-size:1.2em;
+}
+
+span.clear {
+    clear: left;
+    display: block;
+}
+
+audio {
+    position: fixed;
+    bottom: 5%;
+    right: 2%;
+    width: 30%;
+}
+.heart {
+    display: inline;
+    font-size: 2em;
+    color:red;
+}
+.song {
+    width: 90%;
+    height: 3em;
+    padding: 0.6em;
+    margin: 1em;
+    border: 3px solid blue;
+    border-radius: 4em;
+    background-color: white;
+}
+
+.song p {
+    display: inline;
+    margin: 1em
+}
+
+.song {
+    position: relative;
+}
+
+.songName {
+    width: 80%;
+}
+
+.audioBtn {
+    position: absolute;
+    font-size: 2em;
+    right: 5%;
+    top: 14%;
+}
+
+.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 2s linear;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+}
+
+
+#parent {
+    float: left;
+    width: 100%
+}
+
+#loginPanel {
+    float: right;
+}
+#loginPanel p{
+  float: left;
+  display: inline;
+  margin-right: 10px;
+}
+#loginPanel form{
+  font-size: 2em;
+  float: left;
+  display: inline;
+  margin-right:10px;
+}
+
+#content {
+    width: 70%;
+}
