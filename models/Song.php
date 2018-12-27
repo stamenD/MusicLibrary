@@ -32,9 +32,31 @@ class Song
 					INSERT INTO `songs`(`title`, `genre`, `artist`) VALUES (?,?,?);")
 				->execute([$files[$i],"unknown","unknown"]);
 			}
+		}
+
+	}
+	public static function getSongById($conn, $id){
+		$result =  $conn->query( 'SELECT * FROM `songs` WHERE id = '. $id .';');
+		return ($result->fetch())["title"];
 	}
 
-}
+	public static function getMostListenSong($conn, $from){
+		if(is_null($from)){
+			$result =  $conn->query( 'SELECT id_song , SUM(duration) FROM `listen_songs` GROUP BY id_song ORDER BY SUM(duration) DESC LIMIT 1');
+		}
+		else{
+			$result =  $conn->query( 'SELECT id_song , SUM(duration) FROM `listen_songs` WHERE nickname = "'. $from.'" GROUP BY id_song ORDER BY SUM(duration) DESC LIMIT 1');
+		}
+		if($result != false)
+			return ($result->fetch())["id_song"];
+		else
+			return $result;
+	}
+
+	public static function getMostLikedSong($conn){
+		$result =  $conn->query( 'SELECT id_song , COUNT(id_song) FROM liked_songs GROUP BY id_song');
+		return $result;
+	}
 }
 
 ?>

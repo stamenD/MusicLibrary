@@ -34,21 +34,38 @@ class User
 		// ->execute([$nickname]);
 		$arrayIds = array();
 		while ($row = $result->fetch()) {
-			array_push($arrayIds, $row["id"]);
+			array_push($arrayIds, $row["id_song"]);
 		}
 		return $arrayIds;
 	}
 
+	public static function getAllListenSongs($conn, $nickname){
+		$result =  $conn->query( 'SELECT * FROM `listen_songs` WHERE nickname = "'. $nickname.'" ORDER BY listen_at DESC;');
+		return $result;
+		// $arrayIds = array();
+		// while ($row = $result->fetch()) {
+		// 	array_push($arrayIds, $row["id_song"]);
+		// }
+		// return $arrayIds;
+	}
+
 	public static function addFavouriteSong($conn, $nickname, $id){
 		$result =  $conn
-		->prepare( "INSERT INTO `liked_songs`(`id`, `nickname`) VALUES  (?,?);")
+		->prepare( "INSERT INTO `liked_songs`(`id_song`, `nickname`) VALUES  (?,?);")
 		->execute([$id, $nickname]);
+		return $result;
+	}
+
+	public static function addListenSong($conn, $nickname, $id, $duration){
+		$result =  $conn
+		->prepare( "INSERT INTO `listen_songs`(`id_song`, `nickname`, `duration`) VALUES  (?,?,?);")
+		->execute([$id, $nickname,$duration]);
 		return $result;
 	}
 
 	public static function removeFavouriteSong($conn, $nickname, $id){
 		$result =  $conn
-		->prepare( "DELETE FROM `liked_songs` WHERE id = (?) and nickname = (?);")
+		->prepare( "DELETE FROM `liked_songs` WHERE id_song = (?) and nickname = (?);")
 		->execute([$id, $nickname]);
 		return $result;
 	}

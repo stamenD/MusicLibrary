@@ -68,30 +68,7 @@
 
       
       <div id="content">
-         <?php if(array_key_exists('nickname', $_SESSION)): ?> 
-         <p>Потребтелско име: <?= $_SESSION["nickname"] ?></p>
-         <hr>
-         <p>Любими песни: <?= count(User::getAllFavouriteSongs($conn, $_SESSION["nickname"])) ?></p>
-         <hr>
-         <?php if(Song::getMostListenSong($conn, $_SESSION["nickname"]) == false) :?> 
-         <p>Най-слушана песен: "Няма данни" </p>
-         <hr>
-         <?php else:?> 
-         <p>Най-слушана песен: <?= Song::getSongById($conn, Song::getMostListenSong($conn, $_SESSION["nickname"]))?></p>
-         <hr>
-         <?php endif ?>
-         <?php endif ?>
-         <p>Общо слушано време: </p>
-         <hr>
-         <h3>История:</h3>
-         <ul>
-            <?php $result = User::getAllListenSongs($conn, $_SESSION["nickname"]);?> 
-            <?php while ($row = $result->fetch()):?>
-            <li>
-               <?= Song::getSongById($conn, $row["id_song"]) ?> <br> <?=$row["duration"]?> <br> <?=$row["listen_at"]?> <br> <br>
-            </li>
-            <?php endwhile; ?>
-         </ul>
+
       </div>
    </body>
 </html>

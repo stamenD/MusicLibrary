@@ -2,7 +2,7 @@ let playme = document.getElementById("audio");
 playme.className = "hidden"
 
 function like(path, nickname) {
-        let info = {"nickname": myvar, "song": parseInt(path)}
+        let info = {"nickname": myvar["nickname"], "song": parseInt(path)}
         console.log(info)
     let firstHeart = document.querySelectorAll(".song")[0];
     let firstNumber = firstHeart.className.split(" ")[1];
@@ -19,7 +19,11 @@ function like(path, nickname) {
 
 
 }
-
+function millisToMinutesAndSeconds(millis){
+    let minutes = Math.floor(millis / 60000);
+    let seconds = ((millis % 60000) / 1000 ).toFixed(0);
+    return minutes + ":" + (seconds<10? '0' : '') + seconds;
+}
 
 
 function play(path) {
@@ -36,21 +40,33 @@ function play(path) {
             arr[i].innerHTML = '<i class="fa fa-play" ></i>'
         }
     }
-    console.log(document.getElementsByClassName(path)[2].innerHTML)
+
     if (document.getElementsByClassName(path)[2].innerHTML == '<i class="fa fa-pause"></i>') {
-        playme.pause();
-        playme.className = "hidden"
-        document.getElementsByClassName(path)[2].innerHTML = '<i class="fa fa-play-circle"></i>'
+      playme.pause();
+      if( myvar["current_song"]){
+        let info = {"nickname": myvar["nickname"], "song": parseInt(path),"duration": millisToMinutesAndSeconds(new Date() - myvar["started_at"])}
+        send(info, "POST", "../controllers/listenSong.php")
+        console.log("You listen: " + path + " : " + millisToMinutesAndSeconds(new Date() - myvar["started_at"]));
+        myvar["current_song"] = null;
+      }
+      playme.className = "hidden"
+      document.getElementsByClassName(path)[2].innerHTML = '<i class="fa fa-play-circle"></i>'
     } else if (document.getElementsByClassName(path)[2].innerHTML === '<i class="fa fa-play-circle"></i>') {
         playme.play();
+        myvar["current_song"] = path;
+        myvar["started_at"] = new Date();
         playme.className = "visible"
         document.getElementsByClassName(path)[2].innerHTML = '<i class="fa fa-pause"></i>'
     } else {
         document.getElementsByClassName(path)[2].innerHTML = '<i class="fa fa-pause"></i>'
         let sourceFrom = document.getElementsByClassName(path)[1];
         document.getElementsByClassName(path)[0].style.backgroundColor = '#b1baf5';
+        
+        myvar["current_song"] = path;
+        myvar["started_at"] = new Date();
         playme.className = "visible"
-        playme.src = "../static/" + sourceFrom.innerHTML.substring(6);
+        console.log("../static/" + sourceFrom.innerHTML.substring(8))
+        playme.src = "../static/" + sourceFrom.innerHTML.substring(8);
         playme.play();
     }
 
