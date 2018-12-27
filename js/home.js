@@ -2,8 +2,8 @@ let playme = document.getElementById("audio");
 playme.className = "hidden"
 
 function like(path, nickname) {
-        let info = {"nickname": myvar["nickname"], "song": parseInt(path)}
-        console.log(info)
+    let info = {"nickname": myvar["nickname"], "song": parseInt(path)}
+    console.log(info)
     let firstHeart = document.querySelectorAll(".song")[0];
     let firstNumber = firstHeart.className.split(" ")[1];
     let heart = document.querySelectorAll(".song")[path - parseInt(firstNumber)].querySelector(".songName .heart i")
@@ -15,7 +15,7 @@ function like(path, nickname) {
     } else {
         heart.className = "fa fa-heart";
         send(info, "POST", "../controllers/likeSong.php")
-    }
+}
 
 
 }
@@ -44,9 +44,9 @@ function play(path) {
     if (document.getElementsByClassName(path)[2].innerHTML == '<i class="fa fa-pause"></i>') {
       playme.pause();
       if( myvar["current_song"]){
-        let info = {"nickname": myvar["nickname"], "song": parseInt(path),"duration": millisToMinutesAndSeconds(new Date() - myvar["started_at"])}
+        let info = {"nickname": myvar["nickname"], "song": parseInt(myvar["current_song"]),"duration": millisToMinutesAndSeconds(new Date() - myvar["started_at"])}
         send(info, "POST", "../controllers/listenSong.php")
-        console.log("You listen: " + path + " : " + millisToMinutesAndSeconds(new Date() - myvar["started_at"]));
+        console.log("You listen: " + myvar["current_song"]  + " : " + millisToMinutesAndSeconds(new Date() - myvar["started_at"]));
         myvar["current_song"] = null;
       }
       playme.className = "hidden"
@@ -61,13 +61,15 @@ function play(path) {
         document.getElementsByClassName(path)[2].innerHTML = '<i class="fa fa-pause"></i>'
         let sourceFrom = document.getElementsByClassName(path)[1];
         document.getElementsByClassName(path)[0].style.backgroundColor = '#b1baf5';
-        
+        if(myvar["current_song"] != path && !!myvar["current_song"]){
+            let info = {"nickname": myvar["nickname"], "song": parseInt(myvar["current_song"]),"duration": millisToMinutesAndSeconds(new Date() - myvar["started_at"])}
+            send(info, "POST", "../controllers/listenSong.php")
+            console.log("You listen: " + myvar["current_song"] + " : " + millisToMinutesAndSeconds(new Date() - myvar["started_at"]));
+        }
         myvar["current_song"] = path;
         myvar["started_at"] = new Date();
         playme.className = "visible"
-        console.log("../static/" + sourceFrom.innerHTML.substring(8))
         playme.src = "../static/" + sourceFrom.innerHTML.substring(8);
         playme.play();
     }
-
 }
