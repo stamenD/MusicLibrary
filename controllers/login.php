@@ -1,5 +1,9 @@
 <?php
-$conn  = new PDO('mysql:host=localhost;dbname=project', 'root', '');
+$args = array($_SERVER['DOCUMENT_ROOT'] ,"config","globals.php");
+require join(DIRECTORY_SEPARATOR  , $args);
+?>
+<?php
+$conn  = new PDO("mysql:host=".Globals::$mysqlHost.";dbname=".Globals::$mysqlDbname, Globals::$mysqlUsername,Globals::$mysqlPassword );
 
 $stms3 = $conn->query("SELECT * FROM users ") or die("failed!");
 while ($row = $stms3->fetch(PDO::FETCH_ASSOC)) {

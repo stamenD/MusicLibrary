@@ -24,7 +24,7 @@ class Song
 	}
 
 	public static function loadAllSongsInDB(){
-		$conn = new PDO('mysql:host=localhost;dbname=project', 'root', '');
+		$conn = new PDO("mysql:host=".Globals::$mysqlHost.";dbname=".Globals::$mysqlDbname, Globals::$mysqlUsername,Globals::$mysqlPassword );
     	$files = scandir("../static");
     	for ($i = 0; $i < count($files); $i++) {
         	if (strpos($files[$i], ".mp3")) {

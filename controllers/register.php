@@ -1,9 +1,13 @@
 <?php
+$args = array($_SERVER['DOCUMENT_ROOT'] ,"config","globals.php");
+require join(DIRECTORY_SEPARATOR  , $args);
+?> 
+<?php
 spl_autoload_register(function ($class_name) {
     include "../models/".$class_name . '.php';
 });
 // var_dump(json_decode(file_get_contents("php://input"), true));
-$conn = new PDO('mysql:host=localhost;dbname=project', 'root', '');
+$conn = new PDO("mysql:host=".Globals::$mysqlHost.";dbname=".Globals::$mysqlDbname, Globals::$mysqlUsername,Globals::$mysqlPassword );
 echo "<br>";
 if (is_null(json_decode(file_get_contents("php://input"), true))) {
     $current_information = $_POST;
