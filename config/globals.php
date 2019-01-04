@@ -1,9 +1,9 @@
 <?php
 class Globals
 {
-    public static $mysqlHost = "10.0.0.41";
-    public static $mysqlDbname = "test";
+    public static $mysqlHost = "localhost";
+    public static $mysqlDbname = "project";
     public static $mysqlUsername = "root";
-    public static $mysqlPassword = 'ddss9396';
+    public static $mysqlPassword = '';
 }
 ?>
