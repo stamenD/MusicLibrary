@@ -1,5 +1,5 @@
 body {
-    background: url("../static/imgs/background.jpg") no-repeat center center fixed;
+    background: url("http://phpproject2019.s3.amazonaws.com/imgs/background.jpg") no-repeat center center fixed;
     background-size: cover;
     height: 100%;
     /*overflow: hidden;*/

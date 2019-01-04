@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <title>Music Library</title>
-    <link rel="icon" href="../static/imgs/music.ico">
-</head>
+<?php include "templates/head.php"; ?>
+
 <link rel="stylesheet" type="text/css" href="../styles/registerStyle.css">
 <link rel="stylesheet" type="text/css" href="../styles/homeStyle.css">
 <style type="text/css">

@@ -69,7 +69,9 @@ function play(path) {
         myvar["current_song"] = path;
         myvar["started_at"] = new Date();
         playme.className = "visible"
-        playme.src = "../static/" + sourceFrom.innerHTML.substring(8);
+        console.log(">>>>>>>>>>>>"+ "http://phpproject2019.s3.amazonaws.com/" + sourceFrom.innerHTML.substring(8));
+        playme.src = "http://phpproject2019.s3.amazonaws.com/" + sourceFrom.innerHTML.substring(8);
+        // playme.src = "../static/" + sourceFrom.innerHTML.substring(8);
         playme.play();
     }
 }

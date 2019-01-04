@@ -1,11 +1,7 @@
 <?php include "templates/init.php"; ?>
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="utf-8">
-      <title>Music Library</title>
-      <link rel="icon" href="../static/imgs/music.ico">
-   </head>
+   <?php include "templates/head.php"; ?>
    <link rel="stylesheet" type="text/css" href="../styles/homeStyle.css">
    <link rel="stylesheet" type="text/css" href="../styles/statsStyle.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
