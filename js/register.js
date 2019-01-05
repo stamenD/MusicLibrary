@@ -27,8 +27,8 @@ function validate() {
         return false;
     }
     if (!(passwordFirst.value.search(/[A-Z]/) >= 0 &&
-            passwordFirst.value.search(/[a-z]/) >= 0 &&
-            passwordFirst.value.search(/[0-9]/) >= 0)) {
+        passwordFirst.value.search(/[a-z]/) >= 0 &&
+        passwordFirst.value.search(/[0-9]/) >= 0)) {
         let node = document.createElement("p");
         node.innerHTML = "Паролата трябва да има поне 1 главна, 1 малка буква и 1 цифра."
         errors.appendChild(node)
@@ -60,7 +60,7 @@ function loadDoc() {
     info.passwordFirst = passwordFirst.value
     info.passwordSecond = passwordSecond.value
     var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
+    xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             document.getElementById("demo").innerHTML = this.responseText;
         }

@@ -1,26 +1,26 @@
-<?php include "templates/init.php"; ?>
+<?php include "templates/init.php";?>
 <!DOCTYPE html>
 <html>
-<?php include "templates/head.php"; ?>
+<?php include "templates/head.php";?>
 
    <link rel="stylesheet" type="text/css" href="../styles/homeStyle.css">
    <link rel="stylesheet" type="text/css" href="../styles/statsStyle.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    <body>
       <h1>Music Library </h1>
-      <?php include "templates/menu.php"; ?>
+      <?php include "templates/menu.php";?>
       <div id="content">
-         <?php if(array_key_exists('nickname', $_SESSION)): ?> 
-         <?php if(Song::getMostListenSong($conn, null) == false) :?> 
+         <?php if (array_key_exists('nickname', $_SESSION)): ?>
+         <?php if (Song::getMostListenSong($conn, null) == false): ?>
          <p>Най-слушана песен: Няма данни </p>
          <hr>
-         <?php else:?> 
-         <p>Най-слушана песен: <?= Song::getSongById($conn,  Song::getMostListenSong($conn, null))?></p>
+         <?php else: ?>
+         <p>Най-слушана песен: <?=Song::getSongById($conn, Song::getMostListenSong($conn, null))?></p>
          <hr>
-         <?php endif ?>
-         <p>Общо слушано време: <?= Song::getAllListenTime($conn, null)?> </p>
+         <?php endif?>
+         <p>Общо слушано време: <?=Song::getAllListenTime($conn, null)?> </p>
          <hr>
-         <?php endif ?>
+         <?php endif?>
       </div>
    </body>
    <script type="text/javascript" src="../js/common.js"></script>

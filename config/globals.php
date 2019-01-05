@@ -6,4 +6,3 @@ class Globals
     public static $mysqlUsername = "root";
     public static $mysqlPassword = '';
 }
-?>

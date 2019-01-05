@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<?php include "templates/head.php"; ?>
+<?php include "templates/head.php";?>
 
 <link rel="stylesheet" type="text/css" href="../styles/registerStyle.css">
 <link rel="stylesheet" type="text/css" href="../styles/homeStyle.css">
@@ -21,7 +21,7 @@
         </form>
     </div>
 </div>
-    
+
     <div id="errors">
     </div>
     <span id="demo">
@@ -35,6 +35,6 @@
         let node = document.createElement("p");
         node.innerHTML = "Грешно потребителско име или парола."
         errors.appendChild(node)
-    }   
+    }
 </script>
 </html>

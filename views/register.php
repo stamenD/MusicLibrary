@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<?php include "templates/head.php"; ?>
+<?php include "templates/head.php";?>
 
 <link rel="stylesheet" type="text/css" href="../styles/registerStyle.css">
 <link rel="stylesheet" type="text/css" href="../styles/homeStyle.css">
@@ -33,7 +33,7 @@
         let node = document.createElement("p");
         node.innerHTML = "Това потребителско име вече съществува."
         errors.appendChild(node)
-    }   
+    }
 </script>
 
 </html>
