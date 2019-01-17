@@ -27,6 +27,7 @@ function millisToMinutesAndSeconds(millis) {
 
 
 function play(path) {
+    console.log("path:" + path)
     let playme = document.getElementById("audio");
     let arr = document.getElementsByClassName("song")
     for (var i = 0; i < arr.length; i++) {
@@ -59,7 +60,6 @@ function play(path) {
         document.getElementsByClassName(path)[2].innerHTML = '<i class="fa fa-pause"></i>'
     } else {
         document.getElementsByClassName(path)[2].innerHTML = '<i class="fa fa-pause"></i>'
-        let sourceFrom = document.getElementsByClassName(path)[1];
         document.getElementsByClassName(path)[0].style.backgroundColor = '#b1baf5';
         if (myvar["current_song"] != path && !!myvar["current_song"]) {
             let info = { "nickname": myvar["nickname"], "song": parseInt(myvar["current_song"]), "duration": millisToMinutesAndSeconds(new Date() - myvar["started_at"]) }
@@ -69,8 +69,8 @@ function play(path) {
         myvar["current_song"] = path;
         myvar["started_at"] = new Date();
         playme.className = "visible"
-        console.log(">>>>>>>>>>>>" + "http://phpproject2019.s3.amazonaws.com/" + sourceFrom.innerHTML.substring(8));
-        playme.src = "http://phpproject2019.s3.amazonaws.com/" + sourceFrom.innerHTML.substring(8);
+        console.log(">>>>>>>>>>>>" + myvar["staticDir"] + path + ".mp3");
+        playme.src = myvar["staticDir"] + path + ".mp3";
         // playme.src = "../static/" + sourceFrom.innerHTML.substring(8);
         playme.play();
     }

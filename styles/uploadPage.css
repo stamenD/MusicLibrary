@@ -1,0 +1,22 @@
+.innerBlock{
+    margin:20px;
+}
+.leftInnerBlock,.rightInnerBlock{
+    display: inline-block;
+    width:50%;
+    text-align: center;
+}
+#content form{
+    border: blue 3px solid;
+    border-radius: 20px;
+}
+label{
+    font-size: 1.1em;
+}
+.rightInnerBlock input{
+    width: 80%;
+    height: 16px;
+}
+#content h2{
+   text-align: center;
+}

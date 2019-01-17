@@ -1,8 +1,6 @@
 <?php
 $args = array($_SERVER['DOCUMENT_ROOT'], "config", "globals.php");
 require join(DIRECTORY_SEPARATOR, $args);
-?>
-<?php
 spl_autoload_register(function ($class_name) {
     include "../models/" . $class_name . '.php';
 });

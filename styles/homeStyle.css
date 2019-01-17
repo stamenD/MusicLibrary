@@ -4,7 +4,9 @@ body {
     height: 100%;
     /*overflow: hidden;*/
 }
-
+#filter{
+    margin: 20px;
+}
 h1 {
     text-align: center;
 }

@@ -6,6 +6,7 @@ require join(DIRECTORY_SEPARATOR, $args);
 <?php
 session_start();
 $session_value = (isset($_SESSION['nickname'])) ? $_SESSION['nickname'] : '';
+// $uploadDir = Globals::$uploadDir;
 spl_autoload_register(function ($class_name) {
     include "../models/" . $class_name . '.php';
 });

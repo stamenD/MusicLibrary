@@ -10,3 +10,4 @@ header("Location: ./views/register.php");
 die();
 ?>
 <?php endif?>
+
