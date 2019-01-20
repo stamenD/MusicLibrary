@@ -9,11 +9,11 @@ function like(path, nickname) {
     let heart = document.querySelectorAll(".song")[path - parseInt(firstNumber)].querySelector(".songName .heart i")
     // heart.classList.remove("fa");
     console.log(heart)
-    if (heart.className == "fa fa-heart") {
-        heart.className = "fa fa-heart-o";
+    if (heart.innerHTML ==  "❤️") {
+        heart.innerHTML = "🖤";
         send(info, "POST", "../controllers/dislikeSong.php")
     } else {
-        heart.className = "fa fa-heart";
+        heart.innerHTML = "❤️";
         send(info, "POST", "../controllers/likeSong.php")
     }
 
@@ -38,11 +38,11 @@ function play(path) {
     arr = document.getElementsByClassName("audioBtn")
     for (var i = 0; i < arr.length; i++) {
         if (arr[i].className.split(" ")[2] != path) {
-            arr[i].innerHTML = '<i class="fa fa-play" ></i>'
+            arr[i].innerHTML = '▶️'
         }
     }
 
-    if (document.getElementsByClassName(path)[2].innerHTML == '<i class="fa fa-pause"></i>') {
+    if (document.getElementsByClassName(path)[2].innerHTML == '⏸️') {
         playme.pause();
         if (myvar["current_song"]) {
             let info = { "nickname": myvar["nickname"], "song": parseInt(myvar["current_song"]), "duration": millisToMinutesAndSeconds(new Date() - myvar["started_at"]) }
@@ -51,15 +51,15 @@ function play(path) {
             myvar["current_song"] = null;
         }
         playme.className = "hidden"
-        document.getElementsByClassName(path)[2].innerHTML = '<i class="fa fa-play-circle"></i>'
-    } else if (document.getElementsByClassName(path)[2].innerHTML === '<i class="fa fa-play-circle"></i>') {
+        document.getElementsByClassName(path)[2].innerHTML = '⏯️'
+    } else if (document.getElementsByClassName(path)[2].innerHTML === '⏯️') {
         playme.play();
         myvar["current_song"] = path;
         myvar["started_at"] = new Date();
         playme.className = "visible"
-        document.getElementsByClassName(path)[2].innerHTML = '<i class="fa fa-pause"></i>'
+        document.getElementsByClassName(path)[2].innerHTML = '⏸️'
     } else {
-        document.getElementsByClassName(path)[2].innerHTML = '<i class="fa fa-pause"></i>'
+        document.getElementsByClassName(path)[2].innerHTML = '⏸️'
         document.getElementsByClassName(path)[0].style.backgroundColor = '#b1baf5';
         if (myvar["current_song"] != path && !!myvar["current_song"]) {
             let info = { "nickname": myvar["nickname"], "song": parseInt(myvar["current_song"]), "duration": millisToMinutesAndSeconds(new Date() - myvar["started_at"]) }

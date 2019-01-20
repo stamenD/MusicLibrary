@@ -81,16 +81,16 @@ $possibleValues = array("All", "Electronic", "Folk", "HipHop", "Jazz", "Pop", "L
             <div class = "songName">
                <div class="heart">
                   <?php if (in_array($row["id"], $arrayIds)): ?>
-                  <i onclick="like(<?=$row["id"]?>)"  class="fa fa-heart"></i>
+                  <i onclick="like(<?=$row["id"]?>)" >❤️</i>
                   <?php else: ?>
-                  <i onclick="like(<?=$row["id"]?>)"  class="fa fa-heart-o"></i>
+                  <i onclick="like(<?=$row["id"]?>)"  >🖤</i>
                   <?php endif?>
                </div>
                <p class="<?=$row["id"]?>" >  <strong> Име: </strong> <?=$row["title"]?> </p>
                <p > <strong>  Жанр:  </strong> <?=$row["genre"]?> </p>
                <p > <strong>  Изпълнител:  </strong> <?=$row["artist"]?> </p>
             </div>
-            <button class="button audioBtn <?=$row["id"]?> " type="submit" onclick="play(<?=$row["id"]?>)"><i class="fa fa-play"></i></button>
+            <div class="button audioBtn <?=$row["id"]?> " type="submit" onclick="play(<?=$row["id"]?>)">▶️</div>
          </div>
 
       <?php endif?>
