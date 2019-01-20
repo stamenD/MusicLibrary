@@ -13,7 +13,7 @@
             <div><input maxlength="20" placeholder="  Потребителско име" type="text" name="nickname"></div>
             <div><input maxlength="20" placeholder="  Парола" type="text" name="passwordFirst"></div>
             <div><input maxlength="20" placeholder="  Повтори паролата" type="password" name="passwordSecond"></div>
-            <div><button onclick="loadDoc()" id="submitButton" class="button " type="submit">Регистрация</button></div>
+            <div><button id="submitButton" class="button " type="submit">Регистрация</button></div>
         </form>
       	<form action="../views/login.php"  method="GET">
             <div><button class="button " type="submit">Влез със съществуващ профил</button></div>
@@ -28,7 +28,7 @@
 <script type="text/javascript" src="../js/register.js"></script>
 <script type="text/javascript">
     const urlParams = new URLSearchParams(window.location.search);
-    const myParam = urlParams.get('info');
+    const myParam = urlParams.get('failed');
     if(myParam == "true"){
         let node = document.createElement("p");
         node.innerHTML = "Това потребителско име вече съществува."

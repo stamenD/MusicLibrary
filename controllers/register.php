@@ -39,20 +39,19 @@ if ($_POST) {
         $errors = $errors . "Парола втори път - трябва да съвпадат." . '<br>';
     }
     if (strlen($errors) > 0) {
-        // echo 'ERRORS:'.'<br>' . $errors;
+        echo 'ERRORS:'.'<br>' . $errors;
         echo "<br>";
     } else {
         // $stmt2 = $conn->query("ALTER TABLE users ADD created_at  datetime DEFAULT CURRENT_TIMESTAMP;");
         $a1 = $current_information['nickname'];
         $a2 = password_hash($current_information['passwordFirst'], PASSWORD_DEFAULT);
-        // $result = $conn->query("SELECT * FROM `users`;");
-        // while ($row = $result->fetch()) {
-        //     if ($row["nickname"] == $a1) {
-        //         echo "Name: " . $row["nickname"] . "<br>";
-        //         header("Location: ../?info=true");
-        //         die();
-        //     }
-        // }
+        $result = $conn->query("SELECT * FROM `users`;");
+        while ($row = $result->fetch()) {
+            if ($row["nickname"] == $a1) {
+                header("Location: ../views/register.php?failed=true");
+                die();
+            }
+        }
         User::addUser($conn, [$a1, $a2]);
         header("Location: ../views/login.php");
         die();
