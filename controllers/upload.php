@@ -46,6 +46,20 @@ if ($uploadOk == 0) {
     }
     echo $target_file2;
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file2)) {
+
+        if (strcmp($_POST["title"], "") == 0) {
+            $_POST["title"] = "Unknown";
+        }
+
+        if (strcmp($_POST["genre"], "") == 0) {
+            $_POST["genre"] = "Unknown";
+        }
+
+        if (strcmp($_POST["artist"], "") == 0) {
+            $_POST["artist"] = "Unknown";
+        }
+
+        var_dump($_POST);
         Song::uploadSong($conn, $_POST);
         header("Location: ../views/home.php");
         die();

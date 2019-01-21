@@ -72,7 +72,7 @@ $possibleValues = array("All", "Electronic", "Folk", "HipHop", "Jazz", "Pop", "L
     strcmp($row["genre"], $query_params["genre"]) == 0) ||
     (!in_array($query_params["genre"], $possibleValues)) ||
     (strcmp("All", $query_params["genre"]) == 0)): ?>
-    
+
       <?php if ((in_array($row["id"], $arrayIds) &&
     (strcmp("true", $query_params["fouvorite"]) == 0)) ||
     (strcmp("false", $query_params["fouvorite"]) == 0)): ?>
@@ -86,9 +86,16 @@ $possibleValues = array("All", "Electronic", "Folk", "HipHop", "Jazz", "Pop", "L
                   <i onclick="like(<?=$row["id"]?>)"  >🖤</i>
                   <?php endif?>
                </div>
-               <p class="<?=$row["id"]?>" >  <strong> Име: </strong> <?=$row["title"]?> </p>
-               <p > <strong>  Жанр:  </strong> <?=$row["genre"]?> </p>
-               <p > <strong>  Изпълнител:  </strong> <?=$row["artist"]?> </p>
+               <div class="songInformation">
+                  <div class="innerSideSong">
+                     <p class="<?=$row["id"]?>" >  <strong> Име: </strong> <?=$row["title"]?> </p>
+                     <p > <strong>  Изпълнител:  </strong> <?=$row["artist"]?> </p>
+                  </div>
+                  <div class="innerSideSong">
+                     <p > <strong>  Жанр:  </strong> <?=$row["genre"]?> </p>
+                     <p > <strong>  Качена на:  </strong> <?=$row["upload_at"]?> </p>
+                  </div>
+            </div>
             </div>
             <div class="button audioBtn <?=$row["id"]?> " type="submit" onclick="play(<?=$row["id"]?>)">▶️</div>
          </div>

@@ -13,7 +13,7 @@
         <form action="../controllers/login.php" onsubmit="return validate()" method="POST">
             <p><strong>ВХОД</strong></p>
             <div><input maxlength="20" placeholder="  Потребителско име" type="text" name="nickname"></div>
-            <div><input maxlength="20" placeholder="  Парола" type="text" name="password"></div>
+            <div><input maxlength="20" placeholder="  Парола" type="password" name="password"></div>
             <div><button onclick="loadDoc()" id="submitButton" class="button " type="submit">Вход</button></div>
         </form>
         <form action="../" method="GET">

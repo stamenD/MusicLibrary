@@ -108,6 +108,7 @@ class Song
 
     public static function uploadSong($conn, $data)
     {
+
         $result = $conn
             ->prepare("
             INSERT INTO `songs`(`title`, `genre`, `artist`) VALUES (?,?,?);")

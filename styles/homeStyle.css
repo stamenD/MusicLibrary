@@ -34,6 +34,10 @@ aside div {
     font-size:1.2em;
 }
 
+span{
+    margin-left: 12px;
+}
+
 span.clear {
     clear: left;
     display: block;
@@ -46,27 +50,39 @@ audio {
     width: 30%;
 }
 .heart {
+    display: inline-block;
     cursor: pointer;
-    display: inline;
     font-size: 2em;
-    color:red;
+    line-height: 62px;
+    /* border-right: 3px solid; */
+    padding-right: 11px;
 }
 .song {
     width: 90%;
-    height: 3em;
+    height: 4em;
     padding: 0.6em;
     margin: 1em;
     border: 3px solid blue;
     border-radius: 4em;
     background-color: white;
 }
-
-.song p {
-    font-size: 16px;
-    display: inline;
-    margin: 1em
+.songInformation{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 65px;
+    transform: translate(0%, -50%);
+    padding-left: 25px;
 }
-
+.song p {
+    padding: 0;
+    font-size: 19px;
+    margin: 0
+}
+.innerSideSong{
+    float: left;
+    width: 33%;
+}
 .song {
     position: relative;
 }
@@ -78,7 +94,7 @@ audio {
 .audioBtn {
     cursor: pointer;
     position: absolute;
-    font-size: 2em;
+    font-size: 37px;
     right: 5%;
     top: 14%;
 }
@@ -95,11 +111,6 @@ audio {
     transition: visibility 0s 2s, opacity 2s linear;
 }
 
-
-#parent {
-    float: left;
-    width: 100%
-}
 
 #loginPanel {
     float: right;
