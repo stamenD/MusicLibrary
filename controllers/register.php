@@ -16,16 +16,21 @@ if (is_null(json_decode(file_get_contents("php://input"), true))) {
 }
 $errors = '';
 if ($_POST) {
-    if (!array_key_exists('nickname', $current_information) || strlen($current_information['nickname']) == 0) {
+
+    if (!array_key_exists('nickname', $current_information) || strlen($current_information['nickname']) < 3) {
         $errors = $errors . "Потребителското име трябва да е поне 3." . '<br>';
     } elseif (strlen($current_information['nickname']) > 10) {
         $errors = $errors . "Потребителското име трябва да е най-много 10." . '<br>';
     } else {
         $current_information['nickname'] = $current_information['nickname'];
     }
+
     if (!array_key_exists('passwordFirst', $current_information) || strlen($current_information['passwordFirst']) < 6) {
         $errors = $errors . "Паролата трябва да се състои поне от 6 символа." . '<br>';
-    } else {
+    }
+    } elseif (strlen($current_information['passwordFirst']) > 10) {
+         $errors = $errors . "Паролата трябва да е най-много 10." . '<br>';
+    }  else {
         preg_match('/[A-Z]/', $current_information['passwordFirst'], $matches1, PREG_OFFSET_CAPTURE);
         preg_match('/[a-z]/', $current_information['passwordFirst'], $matches2, PREG_OFFSET_CAPTURE);
         preg_match('/[0-9]/', $current_information['passwordFirst'], $matches3, PREG_OFFSET_CAPTURE);

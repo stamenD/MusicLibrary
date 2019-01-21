@@ -1,13 +1,10 @@
 <?php
-var_dump($_POST);
+// var_dump($_POST);
 // var_dump($_FILES);
 spl_autoload_register(function ($class_name) {
-    echo "<br>";
     if (strcmp($class_name, "Globals") == 0) {
-        echo $class_name;
         include "../config/globals.php";
     } else {
-        echo $class_name;
         include "../models/" . $class_name . '.php';
     }
 });
@@ -34,9 +31,15 @@ if ($imageFileType != "mp3") {
     echo "Sorry, only MP3 files are allowed.";
     $uploadOk = 0;
 }
+
+if(strcmp(mime_content_type ( $_FILES["fileToUpload"]["tmp_name"]),"application/octet-stream")!=0){
+    echo "Sorry, only MP3 files are allowed.";
+    $uploadOk = 0;
+}
+
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
+    echo "Your file was not uploaded.";
 // if everything is ok, try to upload file
 } else {
     $target_file2 = "";

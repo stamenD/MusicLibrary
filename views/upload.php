@@ -20,7 +20,7 @@
                </div>
 
                <div class="rightInnerBlock">
-               <input type="text" name="title" id="title">
+               <input maxlength="50" required type="text" name="title" id="title">
                </div>
 
             </div>
@@ -30,7 +30,7 @@
                <label for="artist">Изпълнител</label>
                </div>
                <div class="rightInnerBlock">
-               <input type="text" name="artist" id="artist">
+               <input maxlength="50" required type="text" name="artist" id="artist">
                </div>
             </div>
 
@@ -51,10 +51,10 @@
 
 
             <div class="innerBlock">
-               <input type="file" name="fileToUpload" id="fileToUpload" accept=".mp3">
+               <input required type="file" name="fileToUpload" id="fileToUpload" accept=".mp3">
             </div>
             <div class="innerBlock">
-               <input type="submit" value="Upload" name="submit">
+               <input required type="submit" value="Upload" name="submit">
             </div>
             </form>
       </div>

@@ -10,9 +10,9 @@
     <div class="container">
         <form action="../controllers/register.php" onsubmit="return validate()" method="POST">
             <p><strong>РЕГИСТРАЦИЯ</strong></p>
-            <div><input maxlength="20" placeholder="  Потребителско име" type="text" name="nickname"></div>
-            <div><input maxlength="20" placeholder="  Парола" type="password" name="passwordFirst"></div>
-            <div><input maxlength="20" placeholder="  Повтори паролата" type="password" name="passwordSecond"></div>
+            <div><input required maxlength="10" placeholder="  Потребителско име" type="text" name="nickname"></div>
+            <div><input required maxlength="10" placeholder="  Парола" type="password" name="passwordFirst"></div>
+            <div><input required maxlength="10" placeholder="  Повтори паролата" type="password" name="passwordSecond"></div>
             <div><button id="submitButton" class="button " type="submit">Регистрация</button></div>
         </form>
       	<form action="../views/login.php"  method="GET">
